@@ -13,8 +13,8 @@ protocol Quiz {
     func round() -> [Event]
 }
 
-class HistoricaQuiz {
-    var events: [Event] = [
+struct Events {
+    static let events: [Event] = [
         Event(title: "Wikipedia is launched", year: 2011, url: URL(string: "https://en.wikipedia.org/wiki/Wikipedia")),
         Event(title: "Google is launched", year: 1998, url: URL(string: "https://en.wikipedia.org/wiki/Google")),
         Event(title: "World Wide web is announced", year: 1991, url: URL(string: "https://en.wikipedia.org/wiki/World_Wide_Web")),
@@ -41,6 +41,10 @@ class HistoricaQuiz {
         Event(title: "Transistor invented at Bell Labs", year: 1947, url: URL(string: "https://en.wikipedia.org/wiki/Transistor")),
         Event(title: "Harvard Mark 1 goes into operation", year: 1944, url: URL(string: "https://en.wikipedia.org/wiki/Harvard_Mark_I"))
     ]
+}
+
+class HistoricaQuiz {
+    var events = Events.events
     
     func randomEvents() -> [Event] {
         var randomEvents = [Event]()

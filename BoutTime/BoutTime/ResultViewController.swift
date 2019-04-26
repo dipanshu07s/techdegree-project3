@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol ResultViewControllerDelegate: class {
+    func playAgain(_ controller: ResultViewController, _ playAgain: Bool)
+}
+
 class ResultViewController: UIViewController {
     
     var wins: Int?
+    weak var delegate: ResultViewControllerDelegate?
     @IBOutlet weak var scoreLabel: UILabel!
     
     override func viewDidLoad() {
@@ -22,6 +27,7 @@ class ResultViewController: UIViewController {
     }
 
     @IBAction func playAgain(_ sender: Any) {
+        delegate?.playAgain(self, true)
         dismiss(animated: true, completion: nil)
     }
 }

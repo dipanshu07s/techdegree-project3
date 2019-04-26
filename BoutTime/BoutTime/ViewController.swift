@@ -189,6 +189,7 @@ class ViewController: UIViewController {
         if segue.identifier == "showResult" {
             if let destination = segue.destination as? ResultViewController, let wins = sender as? Int {
                 destination.wins = wins
+                destination.delegate = self
             }
         } else if segue.identifier == "eventDetail" {
             if let destination = segue.destination as? EventDetailViewController, let url = sender as? URL {
@@ -196,5 +197,15 @@ class ViewController: UIViewController {
             }
         }
     }
+}
+
+extension ViewController: ResultViewControllerDelegate {
+    func playAgain(_ controller: ResultViewController, _ playAgain: Bool) {
+        historicalQuiz.events = Events.events
+        round = 0
+        correctAnswer = 0
+        newRound()
+    }
+    
 }
 
